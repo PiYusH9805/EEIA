@@ -20,7 +20,8 @@ class GitHubService:
                 capture_output=True,
                 text=True,
                 encoding="utf-8",
-                errors="replace"
+                errors="replace",
+                timeout=20
             )
 
             if result.returncode != 0:
@@ -118,6 +119,7 @@ class GitHubService:
         return self.run([
             "git",
             "blame",
+            "--",
             filename
         ])
 

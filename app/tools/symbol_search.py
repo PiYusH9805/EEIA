@@ -1,3 +1,4 @@
+from app.tools.file_search import source_files
 import ast
 from pathlib import Path
 
@@ -10,7 +11,9 @@ class SymbolSearch:
 
     def find_symbol(self, symbol):
 
-        for file in self.root.rglob("*.py"):
+        for file in source_files(self.root):
+            if file.suffix != ".py":
+                continue
 
             try:
 

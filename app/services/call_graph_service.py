@@ -1,3 +1,4 @@
+from app.tools.file_search import EXCLUDED
 import ast
 import os
 
@@ -12,7 +13,8 @@ class CallGraphService:
 
         graph = {}
 
-        for root, _, files in os.walk(self.root):
+        for root, dirs, files in os.walk(self.root):
+            dirs[:] = [d for d in dirs if d not in EXCLUDED and not os.path.islink(os.path.join(root, d))]
 
             for file in files:
 

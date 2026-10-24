@@ -1,5 +1,6 @@
 import ast
 from pathlib import Path
+from app.tools.file_search import source_files
 
 
 class CodeParser:
@@ -21,7 +22,9 @@ class CodeParser:
 
         project = []
 
-        for file in self.root.rglob("*.py"):
+        for file in source_files(self.root):
+            if file.suffix != ".py":
+                continue
 
             relative = file.relative_to(self.root)
 

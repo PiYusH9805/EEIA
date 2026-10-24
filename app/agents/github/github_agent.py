@@ -1,3 +1,4 @@
+from pathlib import Path
 from app.services.github_service import GitHubService
 from app.services.llm_service import LLMService
 
@@ -10,11 +11,12 @@ class GitHubAgent:
 
     def __init__(self):
 
-        self.github = GitHubService(".")
+        self.github = GitHubService(str(Path(__file__).resolve().parents[3]))
 
     def ask(self, question: str):
 
-        q = question.lower()
+        request = question.split("\n\nRecent conversation", 1)[0].removeprefix("User request:\n")
+        q = request.lower()
 
         # ==========================================
         # STATUS
@@ -70,7 +72,7 @@ Changed Files:
 
         elif "history" in q:
 
-            filename = self._extract_filename(question)
+            filename = self._extract_filename(request)
 
             if filename:
 
@@ -91,7 +93,7 @@ Changed Files:
 
         elif "blame" in q or "who modified" in q:
 
-            filename = self._extract_filename(question)
+            filename = self._extract_filename(request)
 
             if filename:
 

@@ -35,3 +35,6 @@ outputs/
 
 # Jupyter
 .ipynb_checkpoints/
+myenv/
+tmp/
+tests/eeia-rag-*/
