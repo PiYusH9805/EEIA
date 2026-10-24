@@ -24,7 +24,8 @@ CASES = [
 
 def main():
     rows = []
-    output = Path(__file__).resolve().parents[1] / 'docs' / 'agent-smoke-results.json'
+    output = Path(__file__).resolve().parents[1] / 'outputs' / 'agent-smoke-results.json'
+    output.parent.mkdir(parents=True, exist_ok=True)
     for expected, prompt in CASES:
         started = time.monotonic()
         try:

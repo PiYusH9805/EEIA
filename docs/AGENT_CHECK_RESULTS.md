@@ -22,6 +22,6 @@ These are connectivity and execution checks, not proof that every generated answ
 
 Use explicit file/function names for source-grounded requests. For example: Write documentation for app/main.py, or Generate unit tests for app/main.py chat() rejecting empty questions and questions over 16000 characters. Such requests can correctly select both code and the requested specialist.
 
-Full prompts, answers, plans and timings are in agent-smoke-results.json. The repeatable run instructions and PDF/memory checks are in TESTING_GUIDE.md.
+Re-run tests/smoke_agents.py to generate full prompts, answers, plans and timings in outputs/agent-smoke-results.json. Raw run output is not committed. The repeatable run instructions and PDF/memory checks are in TESTING_GUIDE.md.
 
-The current project has one commit, 5faaa63; the GitHub response correctly reported that three commits were unavailable.
+At the time of this recorded check, the project had one commit, 5faaa63; the GitHub response correctly reported that three commits were unavailable.

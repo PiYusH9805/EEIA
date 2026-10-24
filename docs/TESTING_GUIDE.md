@@ -67,7 +67,7 @@ Explicit live smoke run (uses configured Azure credentials, makes billable model
 .\myenv\Scripts\python.exe -u tests/smoke_agents.py
 ```
 
-Read docs/agent-smoke-results.json for each prompt, selected agents, response and timing. PASS means the expected agent was selected, a nonempty answer returned, and no agent error was reported. It does not certify every factual statement, citation or proposed fix. Inspect the actual answers against source files and PDF excerpts.
+After running the live smoke test, read outputs/agent-smoke-results.json (generated locally and excluded from Git) for each prompt, selected agents, response and timing. PASS means the expected agent was selected, a nonempty answer returned, and no agent error was reported. It does not certify every factual statement, citation or proposed fix. Inspect the actual answers against source files and PDF excerpts.
 
 ## Failures to recognize
 
