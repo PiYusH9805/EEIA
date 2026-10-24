@@ -54,3 +54,11 @@ Retrieval relevance uses heuristics; no calibrated answer-accuracy claim is made
 Additional techniques should be added against a concrete evaluation set and provider configuration, rather than labelled as all advanced RAG being complete.
 
 API references checked during implementation: https://reference.langchain.com/python/langgraph/graph/state/StateGraph/add_conditional_edges and https://docs.trychroma.com/reference/python
+
+## Community Cloud dependency troubleshooting
+
+Use repository PiYusH9805/EEIA, branch main, entry point app.py, and select Python 3.13 in Advanced settings to match the locally tested interpreter. Paste Azure credentials as root-level TOML secrets; never commit .env.
+
+The October 24 deployment log used Python 3.14.9. The former full-environment requirements pinned grpcio-status==1.71.2 while google-api-core[grpc]==2.31.0 required grpcio-status>=1.75.1 on Python 3.14. The application uses Azure OpenAI, not the unused Google/Gemini packages that introduced that conflict. requirements.txt now declares only the eight direct application dependencies and lets the resolver choose compatible transitive dependencies.
+
+Changing requirements triggers dependency installation in Community Cloud. Python-version changes require deleting and redeploying the Cloud app; save its secrets/settings privately first. This does not require deleting the GitHub repository. A passing local test suite does not confirm that a fresh Linux cloud build has completed.
